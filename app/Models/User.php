@@ -10,23 +10,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
+#[Fillable(['firstName','lastName', 'email', 'phone'])]
+//#[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
+    public $timestamps = false;
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * prompt: comment definir relation one to many d,un table qui possede un cle etranger d,un autre dans laravel
      */
-    protected function casts(): array
+    public function rentals() 
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Rental::class, 'userId');
+    }
+
+    public function reviews() 
+    {
+        return $this->hasMany(Review::class, 'userId');
     }
 }

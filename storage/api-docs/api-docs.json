@@ -1,0 +1,63 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "TP1 API",
+        "description": "Documentation de l API TP1",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/equipments": {
+            "get": {
+                "tags": [
+                    "Equipment"
+                ],
+                "summary": "Obtenir tous les équipements",
+                "description": "prompt: comment regler l'errer de generation de docmentation swagger et regler erreur de path OA",
+                "operationId": "6ef4946ec56ce0f0c3e613f7c57d37f2",
+                "responses": {
+                    "200": {
+                        "description": "Liste des équipements avec pagination"
+                    }
+                }
+            }
+        },
+        "/api/equipments/{equipment}/popularity": {
+            "get": {
+                "tags": [
+                    "Equipment"
+                ],
+                "summary": "Calculer popularite d un equipement ",
+                "operationId": "aee6b7cc4e07f5a5c32bfb5c03cf486a",
+                "responses": {
+                    "200": {
+                        "description": "afficher la popularite d equipement"
+                    }
+                }
+            }
+        },
+        "/api/equipments/{equipment}/average-price": {
+            "get": {
+                "tags": [
+                    "Equipment"
+                ],
+                "summary": "Calcule de la moyenne prix d equipement ",
+                "description": "prompt: comment utiliser les requetes query dans laravel pour calculer la moyenne des locations d'un equipemnt parexemple en permettant dajouter un filtre selon date min et max",
+                "operationId": "d03c851cf988611675180cf2120844ad",
+                "responses": {
+                    "200": {
+                        "description": "afficher la moyenne"
+                    },
+                    "422": {
+                        "description": "Erreur de validation"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Equipment",
+            "description": "Equipment"
+        }
+    ]
+}
